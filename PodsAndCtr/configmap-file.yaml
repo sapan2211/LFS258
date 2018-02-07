@@ -1,0 +1,17 @@
+apiVersion: v1
+data:
+  init_master.sh: |+
+    kubeadm init --pod-network-cidr=192.168.0.0/16;
+    mkdir -p $HOME/.kube;
+    cp -i /etc/kubernetes/admin.conf $HOME/.kube/config;
+    chown $(id -u):$(id -g) $HOME/.kube/config;
+    kubectl apply -f https://docs.projectcalico.org/v2.6/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml;
+
+kind: ConfigMap
+metadata:
+  creationTimestamp: 2018-02-07T05:26:31Z
+  name: master-script
+  namespace: default
+  resourceVersion: "106690"
+  selfLink: /api/v1/namespaces/default/configmaps/master-script
+  uid: 745c1dbb-0bc7-11e8-9f65-122d9dcc31ac
