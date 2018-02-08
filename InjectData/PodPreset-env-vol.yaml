@@ -1,0 +1,17 @@
+apiVersion: extensions/v1alpha1
+kind: PodPreset
+metadata: 
+  name: allow-database
+spec: 
+  selector:
+    matchLabels:
+      role: frontend
+  env:
+  - name: DB_PORT
+    value: "6379"
+  volumeMounts:
+  - name: volume-cache
+    mountPaths: /cache
+  volume:
+  - name: volume-cache
+    emptyDir: {}
