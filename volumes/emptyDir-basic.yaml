@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: emptydir-basic
+spec:
+  restartPolicy: Never
+  containers:
+  - name: nginx-ctr
+    image: nginx
+    volumeMounts:
+    - name: emptydir-vol
+      mountPath: /usr/share/nginx/html
+  - name: debian-ctr
+    image: debian
+    volumeMounts:
+    - name: emptydir-vol
+      mountPath: /pod-data
+    command: ["/bin/sh"]
+    args: ["-c", "echo Hello > /pod-data/index.html"]
+  volumes:
+  - name: emptydir-vol
+    emptyDir: {}
