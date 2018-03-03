@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: static-pod
+spec:
+  containers:
+  - name: static-pod-nginnx
+    image: nginx
+    ports:
+    - name: http
+      containerPort: 80
+    volumeMounts:
+    - name: emptydir-vol
+      mountPath: /sapan/test
+  volumes:
+  - name: emptydir-vol
+    emptyDir: {}
