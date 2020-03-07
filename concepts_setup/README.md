@@ -21,7 +21,7 @@ cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
 deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 
-apt-get update && apt-get install -y docker kubelet kubeadm kubectl docker.io
+apt-get update && apt-get install -y docker.io kubelet kubeadm kubectl
 ```
 
 ### Initialize kuberentes master
