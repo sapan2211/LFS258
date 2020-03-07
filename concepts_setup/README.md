@@ -49,10 +49,10 @@ kubeadm join 172.31.10.0:6443 --token <token>  --discovery-token-ca-cert-hash <h
 ```
 
 #### Other master operations
-
+```
 kubectl taint nodes --all node-role.kubernetes.io/master- #run this if you want to have single host master and minion, make master a minion as well
 kubeadm token create --print-join-command # run this if you want to create new token for future to add new nodes/minions
-
+```
 
 ### kubectl commands
 
